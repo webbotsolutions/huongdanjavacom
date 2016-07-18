@@ -6,6 +6,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -16,19 +18,23 @@ public class Question {
     @Id
     @Column
     @GeneratedValue
-    private long id;
+    private int id;
 
-    @Column
+    @Column(columnDefinition = "text")
     private String description;
 
     @OneToMany(mappedBy = "question")
     private Set<Option> options;
 
-    public long getId() {
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
+
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -47,4 +53,13 @@ public class Question {
     public void setOptions(Set<Option> options) {
         this.options = options;
     }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
 }
