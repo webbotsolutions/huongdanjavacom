@@ -65,7 +65,7 @@ public class HomeController {
 
         questionService.addQuestion(Integer.parseInt(categoryIdAsString), description);
 
-        return "home";
+        return "redirect:/";
     }
 
 }

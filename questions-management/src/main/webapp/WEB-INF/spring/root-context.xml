@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:tx="http://www.springframework.org/schema/tx"
-  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
   <!-- Root Context: defines shared resources visible to all other web components -->
-
+  
   <bean id="entityManagerFactoryBean" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
     <property name="dataSource" ref="dataSource" />
     <property name="packagesToScan" value="com.huongdanjava.questionsmanagement.entity" />
@@ -15,6 +13,7 @@
     <property name="jpaProperties">
       <props>
         <prop key="hibernate.hbm2ddl.auto">validate</prop>
+        <prop key="hibernate.id.new_generator_mappings">false</prop>
         <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
       </props>
     </property>
@@ -30,6 +29,5 @@
   <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
     <property name="entityManagerFactory" ref="entityManagerFactoryBean" />
   </bean>
-
-  <tx:annotation-driven transaction-manager="transactionManager"/>
+  
 </beans>
