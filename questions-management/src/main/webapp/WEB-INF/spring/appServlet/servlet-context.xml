@@ -30,5 +30,31 @@
     </beans:property>
   </beans:bean>
 
+  <beans:bean id="entityManagerFactoryBean" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+    <beans:property name="dataSource" ref="dataSource" />
+    <beans:property name="packagesToScan" value="com.huongdanjava.questionsmanagement.entity" />
+    <beans:property name="jpaVendorAdapter">
+      <beans:bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
+    </beans:property>
+    <beans:property name="jpaProperties">
+      <beans:props>
+        <beans:prop key="hibernate.hbm2ddl.auto">validate</beans:prop>
+        <beans:prop key="hibernate.id.new_generator_mappings">false</beans:prop>
+        <beans:prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</beans:prop>
+      </beans:props>
+    </beans:property>
+  </beans:bean>
+
+  <beans:bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+    <beans:property name="driverClassName" value="com.mysql.cj.jdbc.Driver" />
+    <beans:property name="url" value="jdbc:mysql://localhost:3306/question_management" />
+    <beans:property name="username" value="root" />
+    <beans:property name="password" value="123456" />
+  </beans:bean>
+
+  <beans:bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+    <beans:property name="entityManagerFactory" ref="entityManagerFactoryBean" />
+  </beans:bean>
+
   <tx:annotation-driven transaction-manager="transactionManager" />
 </beans:beans>
