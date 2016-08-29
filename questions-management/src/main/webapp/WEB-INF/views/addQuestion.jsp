@@ -12,8 +12,8 @@
 		</select>
 	</div>
 	<div class="form-group">
-		<label>Mô tả về câu hỏi</label>
+		<label>Description</label>
 		<textarea rows="3" class="form-control" name="description"></textarea>
 	</div>
-	<input type="submit" value="Thêm" class="btn btn-default">
+	<input type="submit" value="Add" class="btn btn-default">
 </form>

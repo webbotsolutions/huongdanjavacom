@@ -9,7 +9,20 @@
 <link rel="stylesheet" href="resources/css/bootstrap.min.css" type="text/css" />
 </head>
 <body>
-	<tiles:insertAttribute name="content" />
+	<!-- Main navbar -->
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#"> QUESTIONS MANAGEMENT
+				</a>
+			</div>
+		</div>
+	</nav>
+	<!-- /main navbar -->
+	
+	<div id="page-container">
+		<tiles:insertAttribute name="content" />
+	</div>
 
 	<script type="text/javascript" src="resources/js/jquery-3.1.0.min.js"></script>
 	<script type="text/javascript" src="resources/js/bootstrap.min.js"></script>
